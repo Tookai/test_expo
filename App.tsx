@@ -1,4 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import { NativeBaseProvider } from "native-base";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -10,6 +11,7 @@ export default function App() {
     <NavigationContainer>
       <NativeBaseProvider theme={theme}>
         <SafeAreaProvider>
+          <StatusBar />
           <Navigator />
         </SafeAreaProvider>
       </NativeBaseProvider>
