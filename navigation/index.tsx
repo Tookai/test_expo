@@ -137,6 +137,7 @@ const Navigation = () => {
       <Stack.Group
         screenOptions={{
           headerShown: false,
+          presentation: "card",
         }}
       >
         <Stack.Screen
