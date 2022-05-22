@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Flex, Text } from "native-base";
 import React from "react";
 
@@ -11,6 +12,8 @@ interface IProps {
 }
 
 const User = ({ user }: IProps) => {
+  const navigation = useNavigation<any>();
+
   return (
     <Flex m={2} borderWidth={2} borderColor={"amber.100"} p={2} rounded={"lg"}>
       <Text flex={1}>{user.name}</Text>

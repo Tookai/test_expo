@@ -3,7 +3,7 @@ import React from "react";
 import { SafeAreaView } from "react-native";
 import ThemeToggle from "../components/atom/ThemeToggle";
 
-const ProfileScreen = () => {
+const ProfileDrawer = () => {
   return (
     <SafeAreaView>
       <VStack
@@ -27,4 +27,4 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default ProfileDrawer;
