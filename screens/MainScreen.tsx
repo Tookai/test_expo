@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, Text, View, VStack } from "native-base";
+import { Button, Text, VStack } from "native-base";
 import React from "react";
 import { SafeAreaView } from "react-native";
 import ThemeToggle from "../components/atom/ThemeToggle";
@@ -21,17 +21,20 @@ const MainScreen = () => {
         justifyContent={"center"}
         space={10}
       >
-        <View>
-          <Text>Hello</Text>
+        <Text>Hello</Text>
 
-          <Button onPress={() => navigation.navigate("Feed")}>
-            Go to feed
-          </Button>
+        <Button onPress={() => navigation.navigate("UserModal")}>
+          Go to user
+        </Button>
 
-          <Button onPress={() => navigation.navigate("SettingsDrawer")}>
-            Go to settings
-          </Button>
-        </View>
+        <Button onPress={() => navigation.navigate("Settings")}>
+          Go to right drawer
+        </Button>
+
+        <Button onPress={() => navigation.navigate("Profile")}>
+          Go to left drawer
+        </Button>
+
         <ThemeToggle />
       </VStack>
     </SafeAreaView>

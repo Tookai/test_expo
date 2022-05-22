@@ -7,10 +7,12 @@ import SettingsDrawer from "../screens/SettingsDrawer";
 import UserModal from "../screens/UserModal";
 
 const RightDrawer = createDrawerNavigator();
-function RightDrawerScreen() {
+const LeftDrawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+
+const RightDrawerScreen = () => {
   return (
     <RightDrawer.Navigator
-      initialRouteName={"Main"}
       drawerContent={() => <SettingsDrawer />}
       screenOptions={{
         drawerPosition: "right",
@@ -29,61 +31,86 @@ function RightDrawerScreen() {
       />
     </RightDrawer.Navigator>
   );
-}
+};
 
-const Drawer = createDrawerNavigator();
-const Stack = createNativeStackNavigator();
-
-export default function MyDrawer() {
+const LeftDrawerScreen = () => {
   return (
-    <Drawer.Navigator
-      initialRouteName={"Drawer"}
+    <LeftDrawer.Navigator
       drawerContent={() => <ProfileDrawer />}
       screenOptions={{
+        drawerPosition: "left",
+        headerShown: false,
         drawerStyle: {
           width: "100%",
         },
       }}
     >
-      <RightDrawer.Screen
-        name="Drawer"
-        component={RightDrawerScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <Drawer.Screen
+      <LeftDrawer.Screen
         name="Main"
         component={MainScreen}
         options={{
           headerShown: false,
         }}
       />
+    </LeftDrawer.Navigator>
+  );
+};
 
-      <Drawer.Screen
-        name="Users"
-        component={FeedScreen}
-        options={{
+const Navigation = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName={"Main"}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      {/*   ----- -------  -----   */}
+      {/*   ----- SCREENS  -----   */}
+      {/*   ----- -------  -----   */}
+      <Stack.Group
+        screenOptions={{
+          presentation: "card",
           headerShown: false,
         }}
-      />
+      >
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
 
-      <Drawer.Screen
-        name="Comments"
-        component={FeedScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
+        <Stack.Screen
+          name="Users"
+          component={FeedScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
 
-      <Drawer.Screen
-        name="Photos"
-        component={FeedScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
+        <Stack.Screen
+          name="Comments"
+          component={FeedScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="Photos"
+          component={FeedScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Group>
+      {/*   ----- -------  -----   */}
+      {/*   ----- -------  -----   */}
+
+      {/*   ----- -------  -----   */}
+      {/*   ----- MODALS   -----   */}
+      {/*   ----- -------  -----   */}
 
       <Stack.Group
         screenOptions={{
@@ -100,6 +127,38 @@ export default function MyDrawer() {
           }}
         />
       </Stack.Group>
-    </Drawer.Navigator>
+
+      {/*   ----- -------  -----   */}
+      {/*   ----- -------  -----   */}
+
+      {/*   ----- -------  -----   */}
+      {/*   ----- DRAWERS  -----   */}
+      {/*   ----- -------  -----   */}
+      <Stack.Group
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen
+          name="Settings"
+          component={SettingsDrawer}
+          options={{
+            headerShown: false,
+            animation: "slide_from_right",
+          }}
+        />
+
+        <Stack.Screen
+          name="Profile"
+          component={ProfileDrawer}
+          options={{
+            headerShown: false,
+            animation: "slide_from_left",
+          }}
+        />
+      </Stack.Group>
+    </Stack.Navigator>
   );
-}
+};
+
+export default Navigation;
