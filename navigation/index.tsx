@@ -1,8 +1,10 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FeedScreen from "../screens/FeedScreen.tsx";
 import MainScreen from "../screens/MainScreen";
 import ProfileDrawer from "../screens/ProfileDrawer";
 import SettingsDrawer from "../screens/SettingsDrawer";
+import UserModal from "../screens/UserModal";
 
 const RightDrawer = createDrawerNavigator();
 function RightDrawerScreen() {
@@ -30,10 +32,12 @@ function RightDrawerScreen() {
 }
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+
 export default function MyDrawer() {
   return (
     <Drawer.Navigator
-      initialRouteName={"Main"}
+      initialRouteName={"Drawer"}
       drawerContent={() => <ProfileDrawer />}
       screenOptions={{
         drawerStyle: {
@@ -42,7 +46,7 @@ export default function MyDrawer() {
       }}
     >
       <RightDrawer.Screen
-        name="SettingsDrawer"
+        name="Drawer"
         component={RightDrawerScreen}
         options={{
           headerShown: false,
@@ -80,6 +84,22 @@ export default function MyDrawer() {
           headerShown: false,
         }}
       />
+
+      <Stack.Group
+        screenOptions={{
+          presentation: "modal",
+          headerShown: true,
+          animation: "slide_from_bottom",
+        }}
+      >
+        <Stack.Screen
+          name="UserModal"
+          component={UserModal}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Group>
     </Drawer.Navigator>
   );
 }

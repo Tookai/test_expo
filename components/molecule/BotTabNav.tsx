@@ -23,6 +23,8 @@ const BotTabNav = () => {
       _light={{
         bg: "bgLight",
       }}
+      borderTopWidth={2}
+      borderTopColor={useColorModeValue("black", "white")}
     >
       <Flex
         justifyContent={"center"}
