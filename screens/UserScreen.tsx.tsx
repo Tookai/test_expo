@@ -54,7 +54,11 @@ const UserScreen = () => {
                 tintColor={"blue"}
               />
             }
-            ListEmptyComponent={<Text>The users are loading please wait.</Text>}
+            ListEmptyComponent={
+              <Text textAlign={"center"}>
+                The users are loading please wait.
+              </Text>
+            }
           />
         </VStack>
       </SafeAreaView>

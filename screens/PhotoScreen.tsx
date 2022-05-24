@@ -60,7 +60,9 @@ const PhotoScreen = () => {
                 tintColor={"blue"}
               />
             }
-            ListEmptyComponent={<Text>The users are loading please wait.</Text>}
+            ListEmptyComponent={
+              <Text>The photos are loading please wait.</Text>
+            }
           />
         </VStack>
       </SafeAreaView>
