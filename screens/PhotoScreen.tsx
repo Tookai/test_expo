@@ -44,19 +44,9 @@ const PhotoScreen = () => {
   }, []);
 
   return (
-    <ScreenContainer title={"Feed"}>
+    <ScreenContainer title={"Photos"}>
       <SafeAreaView>
-        <VStack
-          _dark={{
-            bg: "bgDark",
-          }}
-          _light={{
-            bg: "bgLight",
-          }}
-          height="100%"
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
+        <VStack alignItems={"center"} justifyContent={"center"} h={"100%"}>
           <FlatList
             data={users}
             renderItem={({ item, index }) => <User key={index} user={item} />}

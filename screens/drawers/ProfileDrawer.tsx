@@ -1,21 +1,14 @@
-import { Text, View, VStack } from "native-base";
+import { Text, View } from "native-base";
 import React from "react";
-import { SafeAreaView } from "react-native";
-
+import DrawerContainer from "../../common/DrawerContainer";
 
 const ProfileDrawer = () => {
   return (
-    <SafeAreaView>
-      <VStack
-        alignItems={"center"}
-        justifyContent={"center"}
-        space={10}
-      >
-        <View>
-          <Text>Profile</Text>
-        </View>
-      </VStack>
-    </SafeAreaView>
+    <DrawerContainer title={'Profile'}>
+      <View>
+        <Text>Profile</Text>
+      </View>
+    </DrawerContainer>
   );
 };
 

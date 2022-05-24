@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { FlatList, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
@@ -7,18 +6,8 @@ import ScreenContainer from "../common/ScreenContainer";
 import User from "../components/atom/User";
 
 const UserScreen = () => {
-  const navigation = useNavigation<any>();
-
-  const [comments, setComments] = useState<any[]>([]);
   const [users, setUsers] = useState<any[]>([]);
-
   const [refreshing, setRefreshing] = useState<boolean>(false);
-
-  const getComments = () => {
-    axios.get("https://jsonplaceholder.typicode.com/comments").then((res) => {
-      setComments(res.data);
-    });
-  };
 
   const getUsers = () => {
     axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
@@ -28,31 +17,23 @@ const UserScreen = () => {
 
   const refresh = () => {
     setRefreshing(true);
-    setComments([]);
+
     setUsers([]);
 
     setTimeout(() => {
-      getComments();
       getUsers();
       setRefreshing(false);
     }, 3000);
   };
 
   useEffect(() => {
-    getComments();
     getUsers();
   }, []);
 
   return (
-    <ScreenContainer title={"Feed"}>
+    <ScreenContainer title={"Users"}>
       <SafeAreaView>
         <VStack
-          _dark={{
-            bg: "bgDark",
-          }}
-          _light={{
-            bg: "bgLight",
-          }}
           height="100%"
           width="100%"
           alignItems={"center"}

@@ -1,6 +1,5 @@
 import { useColorModeValue, VStack } from "native-base";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 interface IProps {
   children: React.ReactNode;
@@ -8,11 +7,9 @@ interface IProps {
 
 const ModalContainer = ({ children }: IProps) => {
   return (
-    <SafeAreaView>
-      <VStack h={"100%"} bg={useColorModeValue("bgLight", "bgDark")} px={8}>
-        {children}
-      </VStack>
-    </SafeAreaView>
+    <VStack h={"100%"} bg={useColorModeValue("bgLight", "bgDark")} p={2} px={8}>
+      {children}
+    </VStack>
   );
 };
 

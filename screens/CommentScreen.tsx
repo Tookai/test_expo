@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { FlatList, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
@@ -7,11 +6,7 @@ import ScreenContainer from "../common/ScreenContainer";
 import Comment from "../components/atom/Comment";
 
 const CommentScreen = () => {
-  const navigation = useNavigation<any>();
-
   const [comments, setComments] = useState<any[]>([]);
-  const [users, setUsers] = useState<any[]>([]);
-
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   const getComments = () => {
@@ -20,43 +15,24 @@ const CommentScreen = () => {
     });
   };
 
-  const getUsers = () => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      setUsers([...users, ...res.data]);
-    });
-  };
-
   const refresh = () => {
     setRefreshing(true);
     setComments([]);
-    setUsers([]);
 
     setTimeout(() => {
       getComments();
-      getUsers();
       setRefreshing(false);
     }, 3000);
   };
 
   useEffect(() => {
     getComments();
-    getUsers();
   }, []);
 
   return (
-    <ScreenContainer title={"Feed"}>
+    <ScreenContainer title={"Comments"}>
       <SafeAreaView>
-        <VStack
-          _dark={{
-            bg: "bgDark",
-          }}
-          _light={{
-            bg: "bgLight",
-          }}
-          height="100%"
-          alignItems={"center"}
-          justifyContent={"center"}
-        >
+        <VStack h={"100%"} alignItems={"center"} justifyContent={"center"}>
           <FlatList
             data={comments}
             renderItem={({ item, index }) => (
@@ -64,7 +40,7 @@ const CommentScreen = () => {
             )}
             keyExtractor={(item, index) => String(index)}
             initialNumToRender={10}
-            onEndReached={() => getUsers()}
+            onEndReached={() => getComments()}
             refreshControl={
               <RefreshControl
                 refreshing={refreshing}
@@ -72,7 +48,11 @@ const CommentScreen = () => {
                 tintColor={"blue"}
               />
             }
-            ListEmptyComponent={<Text>The users are loading please wait.</Text>}
+            ListEmptyComponent={
+              <Text textAlign={"center"}>
+                The comments are loading please wait.
+              </Text>
+            }
           />
         </VStack>
       </SafeAreaView>

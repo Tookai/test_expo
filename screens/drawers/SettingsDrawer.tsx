@@ -1,16 +1,14 @@
-import { Text, View, VStack } from "native-base";
+import { Text, View } from "native-base";
 import React from "react";
-import { SafeAreaView } from "react-native";
+import DrawerContainer from "../../common/DrawerContainer";
 
 const SettingsDrawer = () => {
   return (
-    <SafeAreaView>
-      <VStack alignItems={"center"} justifyContent={"center"} space={10}>
-        <View>
-          <Text>Settings</Text>
-        </View>
-      </VStack>
-    </SafeAreaView>
+    <DrawerContainer title={"Settings"}>
+      <View>
+        <Text>Settings</Text>
+      </View>
+    </DrawerContainer>
   );
 };
 
