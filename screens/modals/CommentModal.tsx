@@ -1,11 +1,12 @@
-import { Text, View } from "native-base";
+import { Text } from "native-base";
 import React from "react";
+import ModalContainer from "../../common/ModalContainer";
 
 const CommentModal = () => {
   return (
-    <View>
+    <ModalContainer>
       <Text>CommentModal</Text>
-    </View>
+    </ModalContainer>
   );
 };
 

@@ -1,60 +1,13 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import FeedScreen from "../screens/FeedScreen.tsx";
+import CommentScreen from "../screens/CommentScreen";
 import MainScreen from "../screens/MainScreen";
-import ProfileDrawer from "../screens/ProfileDrawer";
-import SettingsDrawer from "../screens/SettingsDrawer";
-import UserModal from "../screens/UserModal";
+import CommentModal from "../screens/modals/CommentModal";
+import PhotoModal from "../screens/modals/PhotoModal";
+import UserModal from "../screens/modals/UserModal";
+import PhotoScreen from "../screens/PhotoScreen";
+import UserScreen from "../screens/UserScreen.tsx";
 
-const RightDrawer = createDrawerNavigator();
-const LeftDrawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
-
-const RightDrawerScreen = () => {
-  return (
-    <RightDrawer.Navigator
-      drawerContent={() => <SettingsDrawer />}
-      screenOptions={{
-        drawerPosition: "right",
-        headerShown: false,
-        drawerStyle: {
-          width: "100%",
-        },
-      }}
-    >
-      <RightDrawer.Screen
-        name="Main"
-        component={MainScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </RightDrawer.Navigator>
-  );
-};
-
-const LeftDrawerScreen = () => {
-  return (
-    <LeftDrawer.Navigator
-      drawerContent={() => <ProfileDrawer />}
-      screenOptions={{
-        drawerPosition: "left",
-        headerShown: false,
-        drawerStyle: {
-          width: "100%",
-        },
-      }}
-    >
-      <LeftDrawer.Screen
-        name="Main"
-        component={MainScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </LeftDrawer.Navigator>
-  );
-};
 
 const Navigation = () => {
   return (
@@ -62,6 +15,7 @@ const Navigation = () => {
       initialRouteName={"Main"}
       screenOptions={{
         headerShown: false,
+        animationTypeForReplace: "pop",
       }}
     >
       {/*   ----- -------  -----   */}
@@ -83,7 +37,7 @@ const Navigation = () => {
 
         <Stack.Screen
           name="Users"
-          component={FeedScreen}
+          component={UserScreen}
           options={{
             headerShown: false,
           }}
@@ -91,7 +45,7 @@ const Navigation = () => {
 
         <Stack.Screen
           name="Comments"
-          component={FeedScreen}
+          component={CommentScreen}
           options={{
             headerShown: false,
           }}
@@ -99,7 +53,7 @@ const Navigation = () => {
 
         <Stack.Screen
           name="Photos"
-          component={FeedScreen}
+          component={PhotoScreen}
           options={{
             headerShown: false,
           }}
@@ -115,7 +69,7 @@ const Navigation = () => {
       <Stack.Group
         screenOptions={{
           presentation: "modal",
-          headerShown: true,
+          headerShown: false,
           animation: "slide_from_bottom",
         }}
       >
@@ -126,38 +80,23 @@ const Navigation = () => {
             headerShown: false,
           }}
         />
-      </Stack.Group>
-
-      {/*   ----- -------  -----   */}
-      {/*   ----- -------  -----   */}
-
-      {/*   ----- -------  -----   */}
-      {/*   ----- DRAWERS  -----   */}
-      {/*   ----- -------  -----   */}
-      <Stack.Group
-        screenOptions={{
-          headerShown: false,
-          presentation: "card",
-        }}
-      >
         <Stack.Screen
-          name="Settings"
-          component={SettingsDrawer}
+          name="CommentModal"
+          component={CommentModal}
           options={{
             headerShown: false,
-            animation: "slide_from_right",
           }}
         />
-
         <Stack.Screen
-          name="Profile"
-          component={ProfileDrawer}
+          name="PhotoModal"
+          component={PhotoModal}
           options={{
             headerShown: false,
-            animation: "slide_from_left",
           }}
         />
       </Stack.Group>
+      {/*   ----- -------  -----   */}
+      {/*   ----- -------  -----   */}
     </Stack.Navigator>
   );
 };

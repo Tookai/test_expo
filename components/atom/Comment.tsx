@@ -1,38 +1,39 @@
 import { useNavigation } from "@react-navigation/native";
-import { Flex, Text } from "native-base";
+import { Text, View } from "native-base";
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface IProps {
-  user: {
+  comment: {
     name: string;
     email: string;
-    username: string;
+    body: string;
     id: number;
+    postId: number;
   };
 }
 
-const User = ({ user }: IProps) => {
+const Comment = ({ comment }: IProps) => {
   const navigation = useNavigation<any>();
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate("UserModal")}
+      onPress={() => navigation.navigate("CommentModal")}
     >
-      <Flex
+      <View
         m={2}
         borderWidth={2}
         borderColor={"amber.100"}
         p={2}
         rounded={"lg"}
       >
-        <Text flex={1}>{user.name}</Text>
-        <Text>{user.email}</Text>
-        <Text>{user.username}</Text>
-      </Flex>
+        <Text>{comment.name}</Text>
+        <Text>{comment.email}</Text>
+        <Text>{comment.body}</Text>
+      </View>
     </TouchableOpacity>
   );
 };
 
-export default User;
+export default Comment;

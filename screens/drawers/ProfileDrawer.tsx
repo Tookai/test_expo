@@ -1,19 +1,12 @@
 import { Text, View, VStack } from "native-base";
 import React from "react";
 import { SafeAreaView } from "react-native";
-import ThemeToggle from "../components/atom/ThemeToggle";
+
 
 const ProfileDrawer = () => {
   return (
     <SafeAreaView>
       <VStack
-        _dark={{
-          bg: "bgDark",
-        }}
-        _light={{
-          bg: "bgLight",
-        }}
-        height="100%"
         alignItems={"center"}
         justifyContent={"center"}
         space={10}
@@ -21,7 +14,6 @@ const ProfileDrawer = () => {
         <View>
           <Text>Profile</Text>
         </View>
-        <ThemeToggle />
       </VStack>
     </SafeAreaView>
   );
