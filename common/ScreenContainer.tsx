@@ -11,11 +11,8 @@ import {
 } from "native-base";
 import React from "react";
 import { SafeAreaView } from "react-native";
-import Swiper from "react-native-web-swiper";
 import ThemeToggle from "../components/atom/ThemeToggle";
 import BotTabNav from "../components/molecule/BotTabNav";
-import ProfileDrawer from "../screens/drawers/ProfileDrawer";
-import SettingsDrawer from "../screens/drawers/SettingsDrawer";
 
 interface IProps {
   children: React.ReactNode;
@@ -61,27 +58,13 @@ const ScreenContainer = ({ children, title }: IProps) => {
             </Flex>
           </VStack>
         </SafeAreaView>
-        <Divider />
+        <Divider mb={2} />
       </Flex>
-      {/* <Swiper
-        from={1}
-        minDistanceForAction={0.25}
-        minDistanceToCapture={20}
-        controlsEnabled={false}
-      >
-        <View flex={1}>
-          <ProfileDrawer />
-        </View>
-        <> */}
-          <View flex={1} bg={useColorModeValue("bgLight", "bgDark")} px={8}>
-            {children}
-          </View>
-          <BotTabNav />
-        {/* </>
-        <View flex={1}>
-          <SettingsDrawer />
-        </View>
-      </Swiper> */}
+
+      <View flex={1} bg={useColorModeValue("bgLight", "bgDark")} px={8}>
+        {children}
+      </View>
+      <BotTabNav />
     </Box>
   );
 };

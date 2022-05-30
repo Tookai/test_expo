@@ -1,13 +1,14 @@
-import { Text, View } from "native-base";
+import { Text } from "native-base";
 import React from "react";
+import { ScreenContainer } from "react-native-screens";
 
 interface IProps {}
 
 const LoginScreen = ({}: IProps) => {
   return (
-    <View>
+    <ScreenContainer>
       <Text>LoginScreen</Text>
-    </View>
+    </ScreenContainer>
   );
 };
 

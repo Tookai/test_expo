@@ -3,7 +3,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { AppParams } from "../../navigation";
+import { AppParams } from "../../navigation/appRoutes";
+
 
 interface IProps {
   comment: {
@@ -21,7 +22,7 @@ const Comment = ({ comment }: IProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate("CommentModal")}
+      onPress={() => navigation.navigate("CommentModal", { commentId: comment.id })}
     >
       <View
         m={2}

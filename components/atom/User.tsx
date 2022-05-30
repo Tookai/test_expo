@@ -3,7 +3,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flex, Text } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { AppParams } from "../../navigation";
+import { AppParams } from "../../navigation/appRoutes";
+
 
 interface IProps {
   user: {

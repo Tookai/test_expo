@@ -4,7 +4,8 @@ import { Heading, VStack } from "native-base";
 import React, { useEffect } from "react";
 import ModalContainer from "../../common/ModalContainer";
 import InfoDisplay from "../../components/atom/InfoDisplay";
-import { AppParams } from "../../navigation";
+import { AppParams } from "../../navigation/appRoutes";
+
 
 interface User {
   name: string;

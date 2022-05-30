@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { RefreshControl, SafeAreaView } from "react-native";
 import ScreenContainer from "../common/ScreenContainer";
 import Photo from "../components/atom/Photo";
-import { AppParams } from "../navigation";
+import { AppParams } from "../navigation/appRoutes";
 
 const PhotoScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppParams>>();
@@ -34,8 +34,6 @@ const PhotoScreen = () => {
   useEffect(() => {
     getPhotos();
   }, []);
-
-  console.log(photos[0]);
 
   return (
     <ScreenContainer title={"Photos"}>

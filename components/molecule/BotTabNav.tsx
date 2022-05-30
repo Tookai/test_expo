@@ -8,7 +8,8 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flex, useColorModeValue } from "native-base";
 import React from "react";
-import { AppParams } from "../../navigation";
+import { AppParams } from "../../navigation/appRoutes";
+
 
 const BotTabNav = () => {
   const navigation = useNavigation<NativeStackNavigationProp<AppParams>>();

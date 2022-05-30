@@ -1,114 +1,37 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import CommentScreen from "../screens/CommentScreen";
-import MainScreen from "../screens/MainScreen";
-import CommentModal from "../screens/modals/CommentModal";
-import PhotoModal from "../screens/modals/PhotoModal";
-import UserModal from "../screens/modals/UserModal";
-import PhotoScreen from "../screens/PhotoScreen";
-import UserScreen from "../screens/UserScreen.tsx";
+import { useState } from "react";
+import AppNavigation, { AppParams } from "./appRoutes";
+import AuthNavigation, { AuthParams } from "./authRoutes";
 
-export type AppParams = {
-  // Screens
-  Main: undefined;
-  Users: undefined;
-  Comments: undefined;
-  Photos: undefined;
-  // Modals
-  UserModal: { userId: number };
-  CommentModal: { commentId: number };
-  PhotoModal: { photoId: number };
+type RootParams = {
+  App: AppParams;
+  Auth: AuthParams;
 };
 
-const Stack = createNativeStackNavigator<AppParams>();
+const Stack = createNativeStackNavigator<RootParams>();
 
 const Navigation = () => {
+  const [isAuth, setIsAuth] = useState<boolean>(true);
+
   return (
-    <Stack.Navigator
-      initialRouteName={"Main"}
-      screenOptions={{
-        headerShown: false,
-        animationTypeForReplace: "pop",
-      }}
-    >
-      {/*   ----- -------  -----   */}
-      {/*   ----- SCREENS  -----   */}
-      {/*   ----- -------  -----   */}
-      <Stack.Group
-        screenOptions={{
-          presentation: "card",
-          headerShown: false,
-        }}
-      >
+    <Stack.Navigator>
+      {isAuth ? (
         <Stack.Screen
-          name="Main"
-          component={MainScreen}
+          name="App"
+          component={AppNavigation}
           options={{
             headerShown: false,
           }}
         />
-
+      ) : (
         <Stack.Screen
-          name="Users"
-          component={UserScreen}
+          name="Auth"
+          component={AuthNavigation}
           options={{
             headerShown: false,
           }}
         />
-
-        <Stack.Screen
-          name="Comments"
-          component={CommentScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-
-        <Stack.Screen
-          name="Photos"
-          component={PhotoScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Group>
-      {/*   ----- -------  -----   */}
-      {/*   ----- -------  -----   */}
-
-      {/*   ----- -------  -----   */}
-      {/*   ----- MODALS   -----   */}
-      {/*   ----- -------  -----   */}
-
-      <Stack.Group
-        screenOptions={{
-          presentation: "modal",
-          headerShown: false,
-          animation: "slide_from_bottom",
-        }}
-      >
-        <Stack.Screen
-          name="UserModal"
-          component={UserModal}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="CommentModal"
-          component={CommentModal}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="PhotoModal"
-          component={PhotoModal}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack.Group>
-      {/*   ----- -------  -----   */}
-      {/*   ----- -------  -----   */}
+      )}
     </Stack.Navigator>
   );
 };
