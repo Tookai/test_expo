@@ -17,6 +17,7 @@ const AuthNavigation = () => {
       screenOptions={{
         headerShown: false,
         animationTypeForReplace: "push",
+        gestureEnabled: false,
       }}
     >
       {/*   ----- -------  -----   */}
