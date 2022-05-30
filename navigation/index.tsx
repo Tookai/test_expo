@@ -11,7 +11,7 @@ type RootParams = {
 const Stack = createNativeStackNavigator<RootParams>();
 
 const Navigation = () => {
-  const [isAuth, setIsAuth] = useState<boolean>(true);
+  const [isAuth, setIsAuth] = useState<boolean>(false);
 
   return (
     <Stack.Navigator>

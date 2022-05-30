@@ -45,12 +45,7 @@ const DrawerContainer = ({ title, children }: IProps) => {
         </SafeAreaView>
         <Divider />
       </Flex>
-      <VStack
-        h={"100%"}
-        bg={useColorModeValue("bgLight", "bgDark")}
-        p={2}
-        px={8}
-      >
+      <VStack flex={1} bg={useColorModeValue("bgLight", "bgDark")} p={2} px={8}>
         {children}
       </VStack>
     </>

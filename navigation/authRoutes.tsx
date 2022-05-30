@@ -16,34 +16,29 @@ const AuthNavigation = () => {
       initialRouteName={"Login"}
       screenOptions={{
         headerShown: false,
-        animationTypeForReplace: "pop",
+        animationTypeForReplace: "push",
       }}
     >
       {/*   ----- -------  -----   */}
       {/*   ----- SCREENS  -----   */}
       {/*   ----- -------  -----   */}
-      <AuthRoutes.Group
-        screenOptions={{
-          presentation: "card",
+
+      <AuthRoutes.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
           headerShown: false,
         }}
-      >
-        <AuthRoutes.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
+      />
 
-        <AuthRoutes.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </AuthRoutes.Group>
+      <AuthRoutes.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+
       {/*   ----- -------  -----   */}
       {/*   ----- -------  -----   */}
     </AuthRoutes.Navigator>
