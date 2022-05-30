@@ -1,7 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flex, Text } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { AppParams } from "../../navigation";
 
 interface IProps {
   user: {
@@ -13,7 +15,7 @@ interface IProps {
 }
 
 const User = ({ user }: IProps) => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<AppParams>>();
 
   return (
     <TouchableOpacity

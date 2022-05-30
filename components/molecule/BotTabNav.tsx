@@ -5,11 +5,13 @@ import {
   Foundation,
 } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flex, useColorModeValue } from "native-base";
 import React from "react";
+import { AppParams } from "../../navigation";
 
 const BotTabNav = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<AppParams>>();
   const route = useRoute();
 
   const isCurrentRoute = (routeName: string) => {

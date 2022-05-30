@@ -7,7 +7,19 @@ import UserModal from "../screens/modals/UserModal";
 import PhotoScreen from "../screens/PhotoScreen";
 import UserScreen from "../screens/UserScreen.tsx";
 
-const Stack = createNativeStackNavigator();
+export type AppParams = {
+  // Screens
+  Main: undefined;
+  Users: undefined;
+  Comments: undefined;
+  Photos: undefined;
+  // Modals
+  UserModal: undefined;
+  CommentModal: undefined;
+  PhotoModal: undefined;
+};
+
+const Stack = createNativeStackNavigator<AppParams>();
 
 const Navigation = () => {
   return (

@@ -1,7 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { AppParams } from "../../navigation";
 
 interface IProps {
   comment: {
@@ -14,7 +16,7 @@ interface IProps {
 }
 
 const Comment = ({ comment }: IProps) => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<AppParams>>();
 
   return (
     <TouchableOpacity
