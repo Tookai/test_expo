@@ -1,26 +1,26 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Flex, Text } from "native-base";
+import { Center, Flex, Image, Text } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { AppParams } from "../../navigation";
 
 interface IProps {
-  user: {
-    name: string;
-    email: string;
-    username: string;
+  photo: {
+    title: string;
+    thumbnailUrl: string;
+    url: string;
     id: number;
   };
 }
 
-const User = ({ user }: IProps) => {
+const Photo = ({ photo }: IProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<AppParams>>();
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => navigation.navigate("UserModal", { userId: user.id })}
+      onPress={() => navigation.navigate("PhotoModal")}
     >
       <Flex
         m={2}
@@ -29,12 +29,23 @@ const User = ({ user }: IProps) => {
         p={2}
         rounded={"lg"}
       >
-        <Text flex={1}>{user.name}</Text>
-        <Text>{user.email}</Text>
-        <Text>{user.username}</Text>
+        <Center p={2}>
+          <Image
+            source={{
+              uri: photo.thumbnailUrl,
+            }}
+            style={{
+              width: 100,
+              height: 100,
+            }}
+            alt={photo.title}
+          />
+        </Center>
+
+        <Text>{photo.title}</Text>
       </Flex>
     </TouchableOpacity>
   );
 };
 
-export default User;
+export default Photo;

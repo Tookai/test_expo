@@ -5,7 +5,7 @@ import { FlatList, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
 import { RefreshControl, SafeAreaView } from "react-native";
 import ScreenContainer from "../common/ScreenContainer";
-import User from "../components/atom/User";
+import Photo from "../components/atom/Photo";
 import { AppParams } from "../navigation";
 
 const PhotoScreen = () => {
@@ -35,13 +35,15 @@ const PhotoScreen = () => {
     getPhotos();
   }, []);
 
+  console.log(photos[0]);
+
   return (
     <ScreenContainer title={"Photos"}>
       <SafeAreaView>
         <VStack alignItems={"center"} justifyContent={"center"} h={"100%"}>
           <FlatList
             data={photos}
-            renderItem={({ item, index }) => <User key={index} user={item} />}
+            renderItem={({ item, index }) => <Photo key={index} photo={item} />}
             keyExtractor={(item, index) => String(index)}
             initialNumToRender={10}
             onEndReached={() => getPhotos()}

@@ -14,9 +14,9 @@ export type AppParams = {
   Comments: undefined;
   Photos: undefined;
   // Modals
-  UserModal: undefined;
-  CommentModal: undefined;
-  PhotoModal: undefined;
+  UserModal: { userId: number };
+  CommentModal: { commentId: number };
+  PhotoModal: { photoId: number };
 };
 
 const Stack = createNativeStackNavigator<AppParams>();

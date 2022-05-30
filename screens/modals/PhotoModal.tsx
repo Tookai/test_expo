@@ -1,14 +1,12 @@
-import { Text, VStack } from "native-base";
+import { Text } from "native-base";
 import React from "react";
-import { SafeAreaView } from "react-native";
+import ModalContainer from "../../common/ModalContainer";
 
 const PhotoModal = () => {
   return (
-    <SafeAreaView>
-      <VStack>
-        <Text>Photo Modal</Text>
-      </VStack>
-    </SafeAreaView>
+    <ModalContainer>
+      <Text>Photo Modal</Text>
+    </ModalContainer>
   );
 };
 
