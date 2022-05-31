@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, Input, Text, VStack } from "native-base";
+import { Button, Input, VStack } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NavigationStackProp } from "react-navigation-stack";
@@ -30,8 +30,6 @@ const LoginScreen = ({}: IProps) => {
           <Button isLoading={loading}>LOGIN</Button>
         </TouchableOpacity>
       </VStack>
-
-      {user && <Text>{user.username}</Text>}
 
       <Button
         margin={10}
