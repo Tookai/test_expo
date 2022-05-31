@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button, Input, VStack } from "native-base";
+import { Button, Input, Text, VStack } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NavigationStackProp } from "react-navigation-stack";
@@ -11,7 +11,7 @@ interface IProps {}
 
 const LoginScreen = ({}: IProps) => {
   const navigation = useNavigation<NavigationStackProp<AuthParams>>();
-  const { user, login, loading, error } = useAuth();
+  const { login, loading, error } = useAuth();
 
   return (
     <DrawerContainer title={"Login"}>
@@ -23,6 +23,9 @@ const LoginScreen = ({}: IProps) => {
       >
         <Input fontSize={20} placeholder="username" type={"text"} />
         <Input fontSize={20} placeholder="password" type={"password"} />
+
+        {error && <Text fontSize={"sm"}>{error}</Text>}
+
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => login("Tookai", "123456")}
