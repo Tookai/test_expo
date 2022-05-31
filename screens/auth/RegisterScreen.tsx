@@ -22,7 +22,11 @@ const RegisterScreen = ({}: IProps) => {
         <Input fontSize={20} placeholder="password" type={"password"} />
       </VStack>
 
-      <Button margin={10} onPressOut={() => navigation.navigate("Login")}>
+      <Button
+        margin={10}
+        onPressOut={() => navigation.navigate("Login")}
+        colorScheme={"coolGray"}
+      >
         Already have an account ?
       </Button>
     </DrawerContainer>

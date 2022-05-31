@@ -13,6 +13,7 @@ import React from "react";
 import { SafeAreaView } from "react-native";
 import ThemeToggle from "../components/atom/ThemeToggle";
 import BotTabNav from "../components/molecule/BotTabNav";
+import { useAuth } from "../contexts/auth";
 
 interface IProps {
   children: React.ReactNode;
@@ -20,6 +21,8 @@ interface IProps {
 }
 
 const ScreenContainer = ({ children, title }: IProps) => {
+  const { logout } = useAuth();
+
   return (
     <Box w={"full"} h={"full"}>
       <Flex backgroundColor={useColorModeValue("bgLight", "bgDark")}>
@@ -40,6 +43,7 @@ const ScreenContainer = ({ children, title }: IProps) => {
                   name="logout"
                   size={24}
                   color={useColorModeValue("black", "white")}
+                  onPress={logout}
                 />
               </Flex>
               <Flex w={"60%"} justifyContent={"center"}>
